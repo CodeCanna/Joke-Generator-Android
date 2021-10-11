@@ -6,7 +6,7 @@ import androidx.activity.contextaware.ContextAware;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity implements ContextAware {
+public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements ContextAware {
     setContentView(R.layout.activity_main);
 
     Button jokeButton = findViewById(R.id.joke_button);
-    JBClickHandler clickHandler = new JBClickHandler(jokeButton.getContext());
+    JBClickHandler clickHandler = new JBClickHandler();
     jokeButton.setOnClickListener(clickHandler);
   }
 }
