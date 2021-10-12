@@ -1,5 +1,8 @@
 package io.codecanna.jokegenerator;
 
+// TODO: Add a joke drum sound that is played after each button press.
+// TODO: Style the joke display and increase joke font size.
+
 import android.widget.Button;
 import android.view.View;
 import androidx.activity.contextaware.ContextAware;

@@ -1,18 +1,22 @@
-package io.codecanna.jokegenerator;
+package io.codecanna.jokegenerator.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * This is a Joke class that represents a joke returned from icanhazdadjokes.com
+ * This is a Joke class that represents a joke returned from icanhazdadjoke.com
  */
 public class Joke {
-  @SerializedName("joke_id")
+  @SerializedName("id")
+  @Expose
   private String jokeId;
 
-  @SerializedName("joke_body")
+  @SerializedName("joke")
+  @Expose
   private String jokeBody;
 
-  @SerializedName("joke_status")
+  @SerializedName("status")
+  @Expose
   private int status;
 
   public String getJokeId() {
@@ -24,7 +28,7 @@ public class Joke {
   }
 
   public String getJokeBody() {
-    return jokeBody;
+    return this.jokeBody;
   }
 
   public void setJokeBody(String jokeBody) {

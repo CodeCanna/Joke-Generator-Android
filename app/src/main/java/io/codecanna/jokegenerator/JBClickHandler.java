@@ -1,51 +1,56 @@
 package io.codecanna.jokegenerator;
 
-import android.app.Notification.Action;
-import android.app.PendingIntent;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.google.gson.Gson;
+import io.codecanna.jokegenerator.model.Joke;
 import io.codecanna.jokegenerator.service.JokeGetter;
-import java.io.IOException;
-import java.lang.reflect.GenericDeclaration;
 import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class JBClickHandler extends Thread implements OnClickListener {
+public class JBClickHandler implements OnClickListener {
+  @Override
+  public void onClick(View v) {
+    TextView tv = v.getRootView().findViewById(R.id.joke_display);
+    // Set our logging to view our Response data
+    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+    interceptor.setLevel(Level.BODY);
 
-  public void run() {
-    OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+    // Create OKHttpClient to add our logging interceptor
+    OkHttpClient httpClient = new OkHttpClient.Builder()
+        .addInterceptor(interceptor)
+        .build();
+
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://icanhazdadjoke.com")
         .addConverterFactory(GsonConverterFactory.create())
-        .client(httpClient.build())
+        .client(httpClient)
         .build();
 
     JokeGetter jokeGetter = retrofit.create(JokeGetter.class);
 
-    try {
-      Response<Joke> jokeResponse = jokeGetter.getJoke().execute();
-      Log.println(Log.ASSERT, "JOKE:", jokeResponse.body().getJokeBody());
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
 
-  @Override
-  public void onClick(View v) {
+    Call<Joke> joke = jokeGetter.getJoke();
+    joke.enqueue(new Callback<Joke>() {
+      @Override
+      public void onResponse(Call<Joke> call, Response<Joke> response) {
+        System.out.println(response.body().getJokeBody());
+        tv.setText(response.body().getJokeBody());
+      }
+
+      @Override
+      public void onFailure(Call<Joke> call, Throwable t) {
+        t.printStackTrace();
+      }
+    });
+
     Log.println(Log.ASSERT, "TEST", "JOKE BUTTON CLICKED!");
-
-    this.start();
-
-
-    TextView tv = (TextView) v.getRootView().findViewById(R.id.joke_display);
-    tv.setText("Knock Knock...");
   }
 }
