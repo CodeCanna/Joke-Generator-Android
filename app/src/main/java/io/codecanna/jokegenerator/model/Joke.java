@@ -19,6 +19,7 @@ public class Joke {
   @Expose
   private int status;
 
+  // Added a constructor for testing
   public Joke(String id, String body, int status) {
     this.setJokeId(id);
     this.setJokeBody(body);

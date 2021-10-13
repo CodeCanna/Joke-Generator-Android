@@ -15,6 +15,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This class hands the clicks from the joke button
+ */
 public class JBClickHandler implements OnClickListener {
   @Override
   public void onClick(View v) {
@@ -37,8 +40,9 @@ public class JBClickHandler implements OnClickListener {
 
     JokeGetter jokeGetter = retrofit.create(JokeGetter.class);
 
-
+    // Create a new joke getter to use
     Call<Joke> joke = jokeGetter.getJoke();
+    // I'm using .enqueue here, so I don't have to worry about managing threads.
     joke.enqueue(new Callback<Joke>() {
       @Override
       public void onResponse(Call<Joke> call, Response<Joke> response) {

@@ -2,10 +2,10 @@ package io.codecanna.jokegenerator;
 
 // TODO: Add a joke drum sound that is played after each button press.
 // TODO: Style the joke display and increase joke font size.
+// TODO: Add a thumbs up and thumbs down buttons so users can rate the joke.
+// TODO: Maybe even a share button?
 
 import android.widget.Button;
-import android.view.View;
-import androidx.activity.contextaware.ContextAware;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
