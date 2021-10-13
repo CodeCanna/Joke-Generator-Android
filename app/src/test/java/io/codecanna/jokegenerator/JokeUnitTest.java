@@ -2,9 +2,11 @@ package io.codecanna.jokegenerator;
 
 import io.codecanna.jokegenerator.model.Joke;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class JokeUnitTest {
+
   // Test Jokes
   String[][] jokes = {
       // Joke 1
@@ -16,7 +18,8 @@ public class JokeUnitTest {
       // Joke 2
       {
           "69xAsrHYDAd", // id
-          "Why did Mozart kill all his chickens?\\r\\nBecause when he asked them who the best composer was, they'd all say \\\"Bach bach bach!\\\"\\r\\n", // body
+          "Why did Mozart kill all his chickens?\\r\\nBecause when he asked them who the best composer was, they'd all say \\\"Bach bach bach!\\\"\\r\\n",
+          // body
           "200" // status
       },
       // Joke 3
@@ -30,11 +33,11 @@ public class JokeUnitTest {
 
   @Test
   public void jokeTest() {
-    for (int i = 0; i < jokes.length; i++) {
-      Joke joke = new Joke(jokes[i][0], jokes[i][1], Integer.parseInt(jokes[i][2])); // Create a joke to test
-      assertEquals(jokes[i][0], joke.getJokeId()); // Test the getJokeId() method
-      assertEquals(jokes[i][1], joke.getJokeBody()); // Test the getJokeBody() method
-      assertEquals(Integer.parseInt(jokes[i][2]), joke.getStatus()); // Test the getStatus() method
+    for (String[] strings : jokes) {
+      Joke joke = new Joke(strings[0], strings[1], Integer.parseInt(strings[2])); // Create a joke to test
+      assertEquals(strings[0], joke.getJokeId()); // Test the getter/setter for id
+      assertEquals(strings[1], joke.getJokeBody()); // Test the getter/setter for joke body
+      assertEquals(Integer.parseInt(strings[2]), joke.getStatus()); // Test the getter/setter for joke status
     }
   }
 }

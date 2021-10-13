@@ -28,6 +28,7 @@ public class JBClickHandler implements OnClickListener {
         .addInterceptor(interceptor)
         .build();
 
+    // Create a new retrofit2 instance
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://icanhazdadjoke.com")
         .addConverterFactory(GsonConverterFactory.create())
