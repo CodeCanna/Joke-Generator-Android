@@ -12,3 +12,4 @@ page_navigator:
 
 titles_from_headings:
   enabled: false
+theme: jekyll-theme-hacker
