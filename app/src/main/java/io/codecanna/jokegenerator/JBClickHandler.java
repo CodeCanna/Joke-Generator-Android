@@ -3,6 +3,7 @@ package io.codecanna.jokegenerator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import io.codecanna.jokegenerator.model.Joke;
 import io.codecanna.jokegenerator.service.BaddumTss;
@@ -44,7 +45,10 @@ public class JBClickHandler implements OnClickListener {
 
     // Create a new joke getter to use
     Call<Joke> joke = jokeGetter.getJoke();
+
     drumSound.baddumTss();
+    Button jb = tv.getRootView().findViewById(R.id.joke_button);
+
     // I'm using .enqueue here, so I don't have to worry about managing threads.
     joke.enqueue(new Callback<Joke>() {
       @Override
@@ -58,7 +62,6 @@ public class JBClickHandler implements OnClickListener {
         t.printStackTrace();
       }
     });
-
     Log.println(Log.ASSERT, "TEST", "JOKE BUTTON CLICKED!");
   }
 }
