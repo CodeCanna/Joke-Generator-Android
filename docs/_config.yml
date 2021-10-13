@@ -1,0 +1,14 @@
+remote_theme: ddc-java/ddc-day
+title: Joke Generator
+description: A simple and fun random Joke Generator.
+
+author:
+  name: Mark Waid Jr
+  copyright: true
+  email: codecannamw@gmail.com
+
+page_navigator:
+  enabled: true
+
+titles_from_headings:
+  enabled: false
