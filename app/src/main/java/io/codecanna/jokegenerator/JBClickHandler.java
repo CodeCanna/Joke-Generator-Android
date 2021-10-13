@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import io.codecanna.jokegenerator.model.Joke;
+import io.codecanna.jokegenerator.service.BaddumTss;
 import io.codecanna.jokegenerator.service.JokeGetter;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -22,6 +23,7 @@ public class JBClickHandler implements OnClickListener {
   @Override
   public void onClick(View v) {
     TextView tv = v.getRootView().findViewById(R.id.joke_display);
+    BaddumTss drumSound = new BaddumTss();
     // Set our logging to view our Response data
     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
     interceptor.setLevel(Level.BODY);
@@ -42,6 +44,7 @@ public class JBClickHandler implements OnClickListener {
 
     // Create a new joke getter to use
     Call<Joke> joke = jokeGetter.getJoke();
+    drumSound.baddumTss();
     // I'm using .enqueue here, so I don't have to worry about managing threads.
     joke.enqueue(new Callback<Joke>() {
       @Override
