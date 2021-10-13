@@ -19,6 +19,12 @@ public class Joke {
   @Expose
   private int status;
 
+  public Joke(String id, String body, int status) {
+    this.setJokeId(id);
+    this.setJokeBody(body);
+    this.setStatus(status);
+  }
+
   public String getJokeId() {
     return jokeId;
   }
