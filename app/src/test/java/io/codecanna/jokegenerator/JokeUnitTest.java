@@ -31,7 +31,7 @@ public class JokeUnitTest {
   @Test
   public void jokeTest() {
     for (int i = 0; i < jokes.length; i++) {
-      Joke joke = new Joke(jokes[i][0], jokes[i][1], Integer.parseInt(jokes[i][2]));
+      Joke joke = new Joke(jokes[i][0], jokes[i][1], Integer.parseInt(jokes[i][2])); // Create a joke to test
       assertEquals(jokes[i][0], joke.getJokeId()); // Test the getJokeId() method
       assertEquals(jokes[i][1], joke.getJokeBody()); // Test the getJokeBody() method
       assertEquals(Integer.parseInt(jokes[i][2]), joke.getStatus()); // Test the getStatus() method
