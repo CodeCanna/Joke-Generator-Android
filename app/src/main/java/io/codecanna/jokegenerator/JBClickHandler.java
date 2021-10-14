@@ -1,6 +1,7 @@
 package io.codecanna.jokegenerator;
 
 import android.util.Log;
+import java.util.concurrent.TimeUnit;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class JBClickHandler implements OnClickListener {
   public void onClick(View v) {
     TextView tv = v.getRootView().findViewById(R.id.joke_display);
     BaddumTss drumSound = new BaddumTss();
+
     // Set our logging to view our Response data
     HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
     interceptor.setLevel(Level.BODY);
