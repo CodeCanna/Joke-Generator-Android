@@ -64,6 +64,5 @@ public class JBClickHandler implements OnClickListener {
         t.printStackTrace();
       }
     });
-    Log.println(Log.ASSERT, "TEST", "JOKE BUTTON CLICKED!");
   }
 }
